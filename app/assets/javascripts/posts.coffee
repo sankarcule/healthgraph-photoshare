@@ -50,3 +50,15 @@ $(document).on 'click', '.signup-submit', (e)->
     }
     return true
   $('.register_user').submit();
+
+$(document).on 'click', '.follow', ()->
+  id = $(this).data('id')
+  type = $(this).data('type')
+  $.ajax '/posts/follow',
+    type: 'get'
+    data: {
+      id: id
+      type: type
+    }
+    success: (data, textStatus, jqXHR) ->
+      $('.posts').html data

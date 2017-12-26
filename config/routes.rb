@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts, only: [:index, :create, :new] do
+    collection do
+      get :follow
+      get :unfollow
+      get :user_posts
+      get :users
+    end
+  end
   devise_for :users, controllers: {
         omniauth_callbacks: 'callbacks'
       }

@@ -1,0 +1,5 @@
+= simple_form_for Post.new, url: posts_path do |f|
+  = f.input_field :caption, class: 'caption', placeholder: 'Caption for new post'
+  = f.input :image, as: :file, label: false
+  = f.hidden_field :user_id, value: current_user.id
+  = f.submit 'Create Post', class: 'submit'

@@ -1,0 +1,8 @@
+.nav-bar
+  .nav-left
+    = link_to 'Photoshare' , root_path
+  .nav-right
+    .nav-tab = link_to 'User posts', user_posts_posts_path
+    .nav-tab = link_to 'Users', users_posts_path
+    .nav-tab
+      = link_to 'Logout', destroy_user_session_path, method: :delete

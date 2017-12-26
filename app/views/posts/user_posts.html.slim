@@ -1,0 +1,11 @@
+.hr
+.posts
+  - @posts.each do |post|
+    .post-box
+      .header
+        .name #{post.user.email}
+      .image
+        = image_tag post.image.url(:medium)
+      - if post.caption.present?
+        .caption
+          = post.caption

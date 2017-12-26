@@ -1,0 +1,15 @@
+- @posts.each do |post|
+  .post-box
+    .header
+      .name #{post.user.email}
+      - if post.user != current_user
+        - if @subscriptions.where(subscribed_by: current_user.id, subscribed_to: post.user.id).first.present?
+          .follow data-id="#{post.user.id}" data-type="unfollow" Unfollow
+        - else
+          .follow data-id="#{post.user.id}" data-type="follow" Follow
+
+    .image
+      = image_tag post.image.url(:medium)
+    - if post.caption.present?
+      .caption
+        = post.caption
