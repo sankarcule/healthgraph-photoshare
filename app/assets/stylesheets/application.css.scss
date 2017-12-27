@@ -118,6 +118,11 @@
  .hidden {
    display: none;
  }
+ a:hover {
+   color: #439eff;
+   text-decoration: none;
+   background-color: white;
+ }
 
 .nav-bar {
   display: flex;
@@ -126,6 +131,7 @@
   padding: 5px 20%;
   border-bottom: 1px solid #e5ebec;
   margin-bottom: 40px;
+  background: white;
   .nav-left {
     width: 50%;
     padding: 10px 0px;
@@ -141,6 +147,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 10px 0px;
+    font-size: 14px;
     .nav-tab {
       width: 33.33%;
       &:hover {
