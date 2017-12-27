@@ -7,5 +7,6 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render partial: 'layouts/navbar'
+    - if URI(request.referer).path.include?('/users/sign_in')
+      = render partial: 'layouts/navbar'
     | #{yield}

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(updated_at: :desc)
     @subscriptions = Subscription.all
   end
 
@@ -14,17 +14,21 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @posts = Post.all
+    @post.save!
+    @posts = Post.all.order(updated_at: :desc)
     @subscriptions = Subscription.all
-    render partial: 'posts/all_posts', locals: {posts: @posts, subscriptions: @subscriptions}
+    respond_to do |format|
+      format.js
+    end
   end
 
   def user_posts
-    @posts = Post.all
+    @posts = current_user.subscribed_tos.map{|a| a.posts}.flatten.sort{|a,b| b.updated_at <=> a.updated_at}
   end
 
   def users
     @users = User.all
+    @subscriptions = Subscription.all
   end
 
   def follow
@@ -33,9 +37,14 @@ class PostsController < ApplicationController
     else
       current_user.unsubscribe(current_user.id, params[:id])
     end
-    @posts = Post.all
+    @posts = Post.all.order(updated_at: :desc)
     @subscriptions = Subscription.all
-    render partial: 'posts/all_posts', locals: {posts: @posts, subscriptions: @subscriptions}
+    @users = User.all
+    if params[:page] == "index"
+      render partial: 'posts/all_posts', locals: {posts: @posts, subscriptions: @subscriptions}
+    else
+      render partial: 'posts/all_users', locals: {subscriptions: @subscriptions, users: @users}
+    end
   end
 
   private

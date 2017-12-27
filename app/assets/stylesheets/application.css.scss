@@ -19,6 +19,7 @@
 
  body {
    margin: 0px !important;
+   background: #f3f3f3;
  }
  .mt30 {
    margin-top: 30px;
@@ -124,7 +125,7 @@
   flex-wrap: nowrap;
   padding: 5px 20%;
   border-bottom: 1px solid #e5ebec;
-
+  margin-bottom: 40px;
   .nav-left {
     width: 50%;
     padding: 10px 0px;
@@ -148,7 +149,9 @@
     }
   }
 }
-
+.pl20 {
+  padding-left: 20%;
+}
 .posts {
   padding: 10px 20%;
   display: flex;
@@ -157,9 +160,10 @@
   font-size: 11px;
 
   .post-box {
-    width: 100%;
-    margin: 20px 0px;
+    width: 302px;
+    margin: 20px;
     border: 1px solid #eee;
+    background: white;
     .header {
       padding: 15px 10px;
       border-bottom: 1px solid #eee;
@@ -177,7 +181,7 @@
 
 .hr {
   margin: 20px 20%;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d2d0d0;
 }
 .new-post-form {
   padding: 10px 20%;
@@ -202,8 +206,31 @@
   }
 }
 .follow, .unfollow {
-  color: #a1d1ec;
+  color: #3cb9ff;
   &:hover {
     cursor: pointer;
+  }
+}
+
+.users {
+  padding: 15px 20%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .user-box {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #eee;
+    margin: 2.5%;
+    background: white;
+    display: flex;
+    .header {
+      display: flex;
+      flex-direction: row;
+      width: 95%;
+      .name {
+        width: 90%;
+      }
+    }
   }
 }

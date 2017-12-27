@@ -1,5 +1,6 @@
 .new-post-form
   = render partial: 'new_post'
 .hr
+h6.pl20 Total no of posts : #{@posts.count}
 .posts
-  = render partial: 'all_posts' 
+  = render partial: 'all_posts'

@@ -54,11 +54,16 @@ $(document).on 'click', '.signup-submit', (e)->
 $(document).on 'click', '.follow', ()->
   id = $(this).data('id')
   type = $(this).data('type')
+  page = $(this).data('page')
   $.ajax '/posts/follow',
     type: 'get'
     data: {
       id: id
       type: type
+      page: page
     }
     success: (data, textStatus, jqXHR) ->
-      $('.posts').html data
+      if (page == 'index')
+        $('.posts').html data
+      else
+        $('.users').html data

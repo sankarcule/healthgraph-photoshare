@@ -1,0 +1,9 @@
+- @users.each do |user|
+  .user-box
+    .header
+      .name #{user.email}
+      - if user != current_user
+        - if @subscriptions.where(subscribed_by: current_user.id, subscribed_to: user.id).first.present?
+          .follow data-id="#{user.id}" data-type="unfollow" data-page="user" Unfollow
+        - else
+          .follow data-id="#{user.id}" data-type="follow" data-page="user" Follow

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :secondary_subscriptions, class_name:  "Subscription",
                                  foreign_key: "subscribed_to",
                                  dependent:   :destroy
-  has_many :subscribers, through: :secondary_subscriptions, source: :subscriber
+  has_many :subscribers, through: :secondary_subscriptions, source: :subscriber, foreign_key: "subscribed_by"
 
   has_many :posts, dependent: :destroy
 

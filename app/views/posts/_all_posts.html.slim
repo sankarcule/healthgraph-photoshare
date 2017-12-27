@@ -4,9 +4,9 @@
       .name #{post.user.email}
       - if post.user != current_user
         - if @subscriptions.where(subscribed_by: current_user.id, subscribed_to: post.user.id).first.present?
-          .follow data-id="#{post.user.id}" data-type="unfollow" Unfollow
+          .follow data-id="#{post.user.id}" data-type="unfollow" data-page="index" Unfollow
         - else
-          .follow data-id="#{post.user.id}" data-type="follow" Follow
+          .follow data-id="#{post.user.id}" data-type="follow" data-page="index" Follow
 
     .image
       = image_tag post.image.url(:medium)

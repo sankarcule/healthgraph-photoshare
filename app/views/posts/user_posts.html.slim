@@ -1,11 +1,13 @@
-.hr
-.posts
-  - @posts.each do |post|
-    .post-box
-      .header
-        .name #{post.user.email}
-      .image
-        = image_tag post.image.url(:medium)
-      - if post.caption.present?
-        .caption
-          = post.caption
+- if @posts.present?
+  .posts
+    - @posts.each do |post|
+      .post-box
+        .header
+          .name #{post.user.email}
+        .image
+          = image_tag post.image.url(:medium)
+        - if post.caption.present?
+          .caption
+            = post.caption
+- else
+  p.pl20 You have not subscribed to any users.
