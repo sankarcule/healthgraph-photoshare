@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "User added"
+Fabricate.times(5, :user)
+User.create!(email: 'admin@admin.com', password: '123456')
+
+puts "Posts added"
+Fabricate.times(5, :post)
