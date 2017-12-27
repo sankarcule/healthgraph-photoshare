@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts, only: [:index, :create, :new] do
+  resources :posts, only: [:index, :create] do
     collection do
       get :follow
-      get :unfollow
       get :user_posts
       get :users
     end

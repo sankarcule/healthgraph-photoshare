@@ -248,7 +248,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.omniauth :facebook, "853614381479123", "ba83f8f0c1a610d1784d3f56bfc3d4e9"
   config.omniauth :google_oauth2, "830813305245-ic785tvqr08e2pc2c915f8eco4a8im8d.apps.googleusercontent.com", "Sruv6tOFEXfgCWqcTBxqCpRs"
-
+  config.stretches = Rails.env.test? ? 1 : 10
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

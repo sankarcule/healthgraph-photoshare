@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: []
   layout "visitors"
   # GET /posts
   # GET /posts.json
@@ -8,13 +8,8 @@ class PostsController < ApplicationController
     @subscriptions = Subscription.all
   end
 
-  def new
-    @post = Post.new
-  end
-
   def create
-    @post = Post.new(post_params)
-    @post.save!
+    @post = Post.create!(post_params)
     @posts = Post.all.order(updated_at: :desc)
     @subscriptions = Subscription.all
     respond_to do |format|
